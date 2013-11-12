@@ -84,9 +84,8 @@ chrome.runtime.onMessage.addListener(
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    console.log(sender.tab ?
-                "from a content script:" + sender.tab.url :
-                "from the extension");
-    if (request.greeting == "hello1")
-      sendResponse({farewell: "goodbye11111"});
+      if (request.updated) {
+	  console.log("gg");
+      }
+      //sendResponse({farewell: "goodbye11111"});
 });
