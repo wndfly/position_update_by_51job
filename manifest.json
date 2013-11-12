@@ -10,7 +10,9 @@
         "128": "128x128.png"
     },
     "permissions": [
-        "notifications"
+        "notifications",
+	"tabs",
+	"http://*.51job.com/*"
     ],
     "options_page": "options.html",
     "background": {
@@ -22,15 +24,16 @@
     "content_scripts": [
         {
             "matches": [
-                "http://search.51job.com/jobsearch/search_result.php*"
+                "http://*.51job.com/*"
             ],
             "css": [
-                "51job.css"
+                "contentscript.css"
             ],
             "js": [
                 "jquery-2.0.3.min.js",
-                "51job.js"
-            ]
+                "contentscript.js"
+            ],
+	    "run_at": "document_end"
         }
     ],
     "page_action": {
@@ -43,7 +46,6 @@
     },
     "manifest_version": 2,
     "web_accessible_resources": [
-        "48.png",
         "jquery-2.0.3.js",
         "jquery-2.0.3.min.map"
     ]
