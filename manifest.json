@@ -1,0 +1,50 @@
+{
+    "name": "Check Position (Beta)",
+    "version": "1.0",
+    "description": "Check position update on 51job.com.",
+    "icons": {
+        "16": "16x16.png",
+        "32": "32x32.png",
+        "48": "48x48.png",
+        "64": "64x64.png",
+        "128": "128x128.png"
+    },
+    "permissions": [
+        "notifications"
+    ],
+    "options_page": "options.html",
+    "background": {
+        "scripts": [
+            "jquery-2.0.3.min.js",
+            "background.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://search.51job.com/jobsearch/search_result.php*"
+            ],
+            "css": [
+                "51job.css"
+            ],
+            "js": [
+                "jquery-2.0.3.min.js",
+                "51job.js"
+            ]
+        }
+    ],
+    "page_action": {
+        "default_icon": {
+            "19": "16x16.png",
+            "38": "32x32.png"
+        },
+        "default_title": "Check Position",
+        "default_popup": "popup.html"
+    },
+    "manifest_version": 2,
+    "web_accessible_resources": [
+        "48.png",
+        "jquery-2.0.3.js",
+        "jquery-2.0.3.min.map"
+    ]
+}
