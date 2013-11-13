@@ -1,0 +1,1 @@
+a easy google chromium extention of position update by 51job.
