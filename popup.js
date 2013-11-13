@@ -19,7 +19,7 @@ $(document).ready(function() {
 	    
 	//});
 	
-	window.close();
+	//window.close();
 
 	//chrome.tabs.executeScript(null, {code:"alert('sdf');"});
 	//window.close();
@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 	});*/
 	
-	window.close();
+	//window.close();
 
     });
 
@@ -97,6 +97,7 @@ function sendStorePositionMessage(strStatus) {
 		} else if (msg.response == "clear success") {
 		    console.log("clear all store positions.");
 		}
+		window.close();
 	    });
 
 	});
