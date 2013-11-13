@@ -2,11 +2,11 @@
  * Created by wndfly on 13-10-31.
  */
 
-/*
+
 var options_basic = {
     type: "basic",
-    title: "Primary Title",
-    message: "Primary message to display",
+    title: "职位更新通知",
+    message: "有新的职位更新，请关注51job职位搜索页面中用红色背景标记的页面。",
     iconUrl: "48x48.png"
 };
 
@@ -41,6 +41,7 @@ var options_progress = {
     progress: 50
 };
 
+/*
 chrome.notifications.create("", options_basic, function() {});
 */
 
@@ -73,6 +74,7 @@ function checkForValidUrl(tabId, changeInfo, tab) {
 // Listen for any changes to the URL of any tab.
 chrome.tabs.onUpdated.addListener(checkForValidUrl);
 
+/*
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     console.log(sender.tab ?
@@ -81,11 +83,11 @@ chrome.runtime.onMessage.addListener(
     if (request.greeting == "hello")
       sendResponse({farewell: "goodbye"});
 });
+*/
 
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-      if (request.updated) {
-	  console.log("gg");
-      }
-      //sendResponse({farewell: "goodbye11111"});
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.position == "updated") {
+	chrome.notifications.create("", options_basic, function() {});
+    }
+    //sendResponse({farewell: "goodbye11111"});
 });
