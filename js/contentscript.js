@@ -3,6 +3,7 @@
  */
 
 var nTimeout = null;
+var objAudio = null;
 
 $(document).ready(function() {
     var position_updated_list = comparePositionList();
@@ -10,10 +11,22 @@ $(document).ready(function() {
     if (position_updated_list && position_updated_list.length) {
 	setPositionColor(position_updated_list);
 	sendNotificationsMessage(position_updated_list);
+    playAudio();
     } else {
 	setRefreshPage();
     }
 });
+
+function playAudio() {
+    if(window.Audio) {
+        if(!objAudio) {
+            var strUrlAudio = chrome.runtime.getURL("audio/Beep.ogg");
+            objAudio = new Audio(strUrlAudio);
+            objAudio.loop = true;
+        }
+        objAudio.play();
+    }
+}
 
 function autoRefreshPage() {
     window.location.reload();
@@ -127,7 +140,8 @@ chrome.runtime.onConnect.addListener(function(port) {
 		port.postMessage({response: "start success"});
 	    } else if (msg.status == "stop") {
 		sessionStorage.clear("status");
-		clearTimeout(nTimeout);
+        autoRefreshPage();
+		//clearTimeout(nTimeout);
 		port.postMessage({response: "stop success"});
 	    }
 	});
